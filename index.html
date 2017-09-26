@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CrystalsCollector</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<h1>CrystalsCollector!</h1>
+
+<body>
+  <p>You will be given a random number at the start of the game.
+    <br>
+    <br>
+  There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
+    <br>
+    <br>
+  You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.
+    <br>
+    <br>
+  The value of each crystal is hidden from you until you click on it.
+    <br>
+    <br>
+  Each time when the game starts, the game will change the value of each crystal.</p>
+
+  <button id="crystalOne">CrystalOne</button>
+  <button id="crystalTwo">CrystalTwo</button>
+  <button id="crystalThree">CrystalThree</button>
+  <button id="crystalFour">CrystalFour</button>
+
+  <div id="game"></div>
+
+  <script type="text/javascript">
+
+    // array of crystal options (1-4)
+    // var crystalChoices = ["c1", "c2", "c3", "c4"];
+
+    // Total Score starts at 0
+    var totalScore = 0;
+
+    // number of wins and losses (both start at 0)
+    var wins = 0;
+    var losses = 0;
+
+    // random number between 19-120
+    var randoNumbo = Math.floor(Math.random() * 102) + 19;
+
+    // random Crystal numbers (1-12)
+    var crystalOneNum = Math.floor(Math.random() * 12) + 1 ;
+    var crystalTwoNum = Math.floor(Math.random() * 12) + 1 ;
+    var crystalThreeNum = Math.floor(Math.random() * 12) + 1 ;
+    var crystalFourNum = Math.floor(Math.random() * 12) + 1 ;
+
+      // this variable holds the game's HTML
+    var gameDash =
+        "<p>Match this: " + randoNumbo + "</p>" +
+        "<p>Wins: " + wins + "</p>" +
+        "<p>Losses: " + losses + "</p>" +
+        "<p>Your total score is: " + totalScore + "</p>" ;
+
+      //  CRYSTAL 1
+      $("#crystalOne").on("click", function() {
+        totalScore = totalScore + crystalOneNum ;
+        $("#game").html(gameDash);
+      });
+
+      //  CRYSTAL 2
+      $("#crystalTwo").on("click", function() {
+        totalScore = totalScore + crystalTwoNum ;
+        $("#game").html(gameDash);
+      });
+
+      //  CRYSTAL 3
+      $("#crystalThree").on("click", function() {
+        totalScore = totalScore + crystalThreeNum ;
+        $("#game").html(gameDash);
+      });
+
+      //  CRYSTAL 4
+      $("#crystalFour").on("click", function() {
+        totalScore = totalScore + crystalFourNum ;
+        $("#game").html(gameDash);
+      });
+
+      console.log(totalScore);
+      console.log(randoNumbo);
+
+      if (totalScore===randoNumbo) {
+        $("#game").html("You win!");
+        wins++;
+        $("#game").html(html);
+      }
+
+      else if (totalScore > randoNumbo) {
+        $("#game").html("You lose!");
+        losses++;
+        $("#game").html(html);
+      }
+
+  </script>
+
+</body>
+
+</html>
